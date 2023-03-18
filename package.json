@@ -1,0 +1,23 @@
+{
+  "name": "react-native-swipeable-panel",
+  "version": "1.0.6",
+  "description": "Swipeable Panel for React Native",
+  "main": "index.jsx",
+  "type": "module",
+  "types": "./index.d.ts",
+  "scripts": {
+    "build-types": "npx -p typescript tsc index.jsx --declaration --allowJs --emitDeclarationOnly"
+  },
+  "keywords": [
+    "react-native-component",
+    "react-native",
+    "swipeable",
+    "panel",
+    "swipeable-panel",
+    "swipe-down",
+    "bottom-panel"
+  ],
+  "author": "alexanderiscoding",
+  "homepage": "https://docs.alexanderiscoding.com/package/react-native-swipeable-panel",
+  "license": "MIT"
+}
