@@ -1,6 +1,6 @@
 {
   "name": "react-native-swipeable-panel",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Swipeable Panel for React Native",
   "main": "index.jsx",
   "type": "module",
@@ -19,5 +19,9 @@
   ],
   "author": "alexanderiscoding",
   "homepage": "https://docs.alexanderiscoding.com/package/react-native-swipeable-panel",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:alexanderiscoding/npm-react-swipeable-panel.git"
+  }
 }
