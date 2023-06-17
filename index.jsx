@@ -15,6 +15,9 @@ let panResponder;
 export default class Component extends PureComponent {
   constructor(props) {
     super(props);
+    this.state = {
+      panelHeight: 0
+    }
     panResponder = PanResponder.create({
       onMoveShouldSetPanResponder: () => true,
       onPanResponderMove: (e, gestureState) => {
@@ -22,7 +25,7 @@ export default class Component extends PureComponent {
           x: 0,
           y: gestureState.dy > 0 ? gestureState.dy : 0,
         });
-        if (gestureState.dy > this.props.panelHeight) {
+        if (gestureState.dy > this.state.panelHeight) {
           this.props.close();
         }
       },
@@ -72,7 +75,7 @@ export default class Component extends PureComponent {
       <Animated.View
         style={[styles.panel, { backgroundColor: this.props.panelBackgroundColor ? this.props.panelBackgroundColor : 'white', shadowColor: this.props.panelShadowColor ? this.props.panelShadowColor : '#000000' }]}
         {...panResponder.panHandlers}
-        onLayout={(event) => this.props.setPanelHeight(event.nativeEvent.layout.height)}
+        onLayout={(event) => this.setState({ panelHeight: event.nativeEvent.layout.height })}
       >
         <View style={styles.barContainer}>
           <View style={[styles.bar, { backgroundColor: this.props.barBackgroundColor ? this.props.barBackgroundColor : '#e2e2e2' }]} />
