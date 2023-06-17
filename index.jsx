@@ -20,7 +20,7 @@ export default class Component extends PureComponent {
       onPanResponderMove: (e, gestureState) => {
         PAN.setValue({
           x: 0,
-          y: gestureState.dy,
+          y: gestureState.dy > 0 ? gestureState.dy : 0,
         });
         if (gestureState.dy > this.props.panelHeight) {
           this.props.close();
@@ -70,12 +70,12 @@ export default class Component extends PureComponent {
   render() {
     return this.props.show ? (
       <Animated.View
-        style={[styles.panel, { backgroundColor: this.props.backgroundColor ? this.props.backgroundColor : 'white' }]}
+        style={[styles.panel, { backgroundColor: this.props.panelBackgroundColor ? this.props.panelBackgroundColor : 'white', shadowColor: this.props.panelShadowColor ? this.props.panelShadowColor : '#000000' }]}
         {...panResponder.panHandlers}
         onLayout={(event) => this.props.setPanelHeight(event.nativeEvent.layout.height)}
       >
         <View style={styles.barContainer}>
-          <View style={styles.bar} />
+          <View style={[styles.bar, { backgroundColor: this.props.barBackgroundColor ? this.props.barBackgroundColor : '#e2e2e2' }]} />
         </View>
         <ScrollView
           onTouchStart={() => {
@@ -104,7 +104,6 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
     overflow: 'hidden',
-    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -125,6 +124,5 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 10,
     marginBottom: 10,
-    backgroundColor: '#e2e2e2',
   }
 });
