@@ -43,6 +43,11 @@ export default class Component extends PureComponent {
     });
   }
 
+  orientationChange = () => {
+    FULL_HEIGHT = Dimensions.get('window').height;
+    PAN = new Animated.ValueXY({ x: 0, y: FULL_HEIGHT });
+  };
+
   componentDidMount = () => {
     if (this.props.show) {
       Animated.spring(PAN, {
@@ -78,7 +83,7 @@ export default class Component extends PureComponent {
         onLayout={(event) => this.setState({ panelHeight: event.nativeEvent.layout.height })}
       >
         <View style={styles.barContainer}>
-          <View style={[styles.bar, { backgroundColor: this.props.barBackgroundColor ? this.props.barBackgroundColor : '#e2e2e2' }]} />
+          <View style={[styles.bar, { backgroundColor: this.props.panelBarColor ? this.props.panelBarColor : '#e2e2e2' }]} />
         </View>
         <ScrollView
           onTouchStart={() => {
